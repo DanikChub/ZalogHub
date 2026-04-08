@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Единоличный арбитр</title>
+  <meta name="description" content="Шаблон страницы адвоката" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: '#f8f7f3',
+            paper: '#ffffff',
+            ink: '#1f2937',
+            muted: '#667085',
+            line: '#dfd8cd',
+            accent: '#314254',
+            accent2: '#ede7dd',
+            gold: '#8a6a3e'
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(15, 23, 42, 0.05)',
+            softlg: '0 22px 60px rgba(15, 23, 42, 0.07)',
+            card: '0 8px 24px rgba(15, 23, 42, 0.04)'
+          },
+          fontFamily: {
+            serifCustom: ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
+            sansCustom: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8f7f3;
+      color: #1f2937;
+    }
+
+    .serif-title {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .section-line {
+      position: relative;
+    }
+
+    .section-line::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 72px;
+      height: 2px;
+      background: #314254;
+      opacity: 0.9;
+    }
+
+    .nav-link {
+      position: relative;
+      text-align: center;
+      transition: color 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 0;
+      height: 1.5px;
+      background: #314254;
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover {
+      color: #314254;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .mobile-nav-link {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(223, 216, 205, 0.95);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #475569;
+      transition: color 0.2s ease, padding-left 0.2s ease;
+    }
+
+    .mobile-nav-link:hover {
+      color: #314254;
+      padding-left: 6px;
+    }
+
+    .burger-line {
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      transform-origin: center;
+    }
+
+    .burger-active .burger-line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .burger-active .burger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .burger-active .burger-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    #mobileMenu {
+      transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    #mobileMenu.open {
+      max-height: 520px;
+      opacity: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(17,24,39,0.10), rgba(17,24,39,0.02)),
+        linear-gradient(to top, rgba(17,24,39,0.04), rgba(17,24,39,0.00));
+      pointer-events: none;
+    }
+
+    .service-icon,
+    .contact-icon {
+      color: #8a6a3e;
+      opacity: 0.95;
+    }
+
+    .refined-btn {
+      letter-spacing: 0.2em;
+    }
+
+    @media (max-width: 1023px) {
+      .nav-link::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-base text-ink">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 border-b border-stone-200/80 bg-base/95 backdrop-blur">
+    <div class="max-w-8xl mx-auto px-4 sm:px-5 lg:px-8">
+      <div class="min-h-[74px] sm:min-h-[82px] flex items-center justify-between gap-4">
+
+        <div class="flex-shrink-0">
+          <div class="serif-title text-lg sm:text-xl lg:text-2xl text-accent tracking-[0.12em] uppercase">
+            ad_hoc
+          </div>
+        </div>
+
+        <nav class="hidden xl:flex items-center gap-6 2xl:gap-8 text-[12px] 2xl:text-[13px] uppercase tracking-[0.16em] text-slate-700">
+          <a href="#sud" class="nav-link">Третейский суд</a>
+          <a href="#reglament" class="nav-link">Регламент арбитра</a>
+          <a href="#process" class="nav-link">Третейский процесс</a>
+          <a href="#fee" class="nav-link">Арбитражный сбор</a>
+          <a href="#contacts" class="nav-link">Третейская оговорка</a>
+          <a href="#contacts" class="nav-link">Контакты</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-4">
+          <div class="hidden lg:block text-sm text-slate-600">
+            Бесплатная консультация
+          </div>
+          <a href="#consult"
+             class="refined-btn inline-flex items-center justify-center rounded-none border border-accent px-4 lg:px-5 py-3 text-[11px] sm:text-[12px] font-semibold uppercase text-accent hover:bg-accent hover:text-white transition">
+            Записаться
+          </a>
+        </div>
+
+        <button
+          id="burgerBtn"
+          class="xl:hidden inline-flex flex-col justify-center items-center w-11 h-11 border border-stone-300 bg-white/80 hover:border-accent transition"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+          type="button"
+        >
+          <span class="burger-line block w-5 h-[1.5px] bg-slate-700 mb-[5px]"></span>
+          <span class="burger-line block w-5 h-[1.5px] bg-slate-700 mb-[5px]"></span>
+          <span class="burger-line block w-5 h-[1.5px] bg-slate-700"></span>
+        </button>
+      </div>
+
+      <!-- MOBILE MENU -->
+      <div id="mobileMenu" class="xl:hidden">
+        <div class="pb-5">
+          <nav class="pt-1">
+            <a href="#sud" class="mobile-nav-link">Третейский суд</a>
+            <a href="#reglament" class="mobile-nav-link">Регламент арбитра</a>
+            <a href="#process" class="mobile-nav-link">Третейский процесс</a>
+            <a href="#fee" class="mobile-nav-link">Арбитражный сбор</a>
+            <a href="#contacts" class="mobile-nav-link">Третейская оговорка</a>
+            <a href="#contacts" class="mobile-nav-link">Контакты</a>
+          </nav>
+
+          <div class="pt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div class="text-sm text-slate-600">
+              Бесплатная консультация
+            </div>
+            <a href="#consult"
+               class="refined-btn inline-flex items-center justify-center border border-accent px-5 py-3 text-[12px] font-semibold uppercase text-accent hover:bg-accent hover:text-white transition">
+              Записаться
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="sud" class="pt-6 sm:pt-8 lg:pt-14 pb-8 lg:pb-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-8">
+      <div class="overflow-hidden border border-stone-300 bg-paper shadow-softlg">
+        <div class="grid lg:grid-cols-2 min-h-[unset] lg:min-h-[700px]">
+          <div class="min-h-[320px] sm:min-h-[420px] lg:min-h-[700px]">
+            <div class="relative h-full w-full overflow-hidden">
+              <img
+                src="./img/main.png"
+                alt="Черкашина Наталия Сергеевна"
+                class="h-full w-full object-cover absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              />
+              <div class="hero-overlay"></div>
+            </div>
+          </div>
+
+          <div class="bg-[#fbfaf7] border-t lg:border-t-0 lg:border-l border-stone-200 flex items-center">
+            <div class="w-full px-5 py-8 sm:px-7 sm:py-10 md:px-10 lg:px-14 lg:py-14 xl:px-16 xl:py-16">
+              <div class="section-line pt-6 sm:pt-8">
+                <div class="text-[11px] sm:text-[12px] uppercase tracking-[0.22em] text-slate-500 mb-5 sm:mb-6">
+                  Единоличный арбитр
+                </div>
+
+                <h1 class="serif-title text-3xl sm:text-4xl md:text-5xl xl:text-6xl leading-[1.08] text-slate-800 mb-6 sm:mb-8 max-w-xl">
+                  Черкашина Наталия Сергеевна
+                </h1>
+
+                <p class="text-[15px] sm:text-[16px] md:text-[17px] xl:text-[18px] leading-7 sm:leading-8 text-slate-600 max-w-2xl mb-8 sm:mb-10">
+                  Третейский судья по урегулированию коммерческих споров. Специализируется на арбитраже ad hoc, обладает большим опытом в области международной торговли и договорного права. Обеспечиваю максимально комфортный и эффективный арбитражный процесс.
+                </p>
+
+                <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
+                  <a href="#consult"
+                     class="refined-btn inline-flex items-center justify-center bg-accent text-white px-6 py-4 text-[11px] sm:text-[12px] font-semibold uppercase hover:opacity-90 transition">
+                    Записаться
+                  </a>
+                  <a href="#fee"
+                     class="refined-btn inline-flex items-center justify-center border border-accent text-accent px-6 py-4 text-[11px] sm:text-[12px] font-semibold uppercase hover:bg-accent hover:text-white transition">
+                    Арбитражный сбор
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="reglament" class="py-14 sm:py-16 lg:py-24 bg-paper border-y border-stone-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12 lg:mb-14">
+        <div class="text-[11px] sm:text-[12px] uppercase tracking-[0.22em] text-slate-500 mb-4">
+          Основные направления
+        </div>
+        <h2 class="serif-title text-3xl sm:text-4xl lg:text-5xl text-slate-800 leading-tight">
+          Арбитражные услуги для вашего бизнеса
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
+        <div class="border border-stone-200 bg-white p-6 sm:p-8 lg:p-10 shadow-card hover:-translate-y-1 hover:shadow-lg transition duration-300">
+          <div class="flex items-start gap-4 mb-5">
+            <div class="service-icon mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 4v5c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V7l7-4z"/>
+              </svg>
+            </div>
+            <div class="w-12 h-[2px] bg-accent mt-3"></div>
+          </div>
+          <h3 class="serif-title text-xl sm:text-2xl text-slate-800 mb-4 sm:mb-5">Ad-hoc арбитраж</h3>
+          <p class="text-slate-600 leading-7 sm:leading-8 text-[15px] sm:text-[16px]">
+            Быстрое и справедливое разрешение споров в индивидуальном порядке.
+          </p>
+        </div>
+
+        <div class="border border-stone-200 bg-white p-6 sm:p-8 lg:p-10 shadow-card hover:-translate-y-1 hover:shadow-lg transition duration-300">
+          <div class="flex items-start gap-4 mb-5">
+            <div class="service-icon mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-6-6h12"/>
+              </svg>
+            </div>
+            <div class="w-12 h-[2px] bg-accent mt-3"></div>
+          </div>
+          <h3 class="serif-title text-xl sm:text-2xl text-slate-800 mb-4 sm:mb-5">Беспристрастный арбитраж</h3>
+          <p class="text-slate-600 leading-7 sm:leading-8 text-[15px] sm:text-[16px]">
+            Независимый арбитр обеспечивает объективное и справедливое рассмотрение споров, защищая интересы всех сторон.
+          </p>
+        </div>
+
+        <div class="border border-stone-200 bg-white p-6 sm:p-8 lg:p-10 shadow-card hover:-translate-y-1 hover:shadow-lg transition duration-300">
+          <div class="flex items-start gap-4 mb-5">
+            <div class="service-icon mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h8M8 11h8M8 15h5M6 3h12a2 2 0 012 2v14l-4-2-4 2-4-2-4 2V5a2 2 0 012-2z"/>
+              </svg>
+            </div>
+            <div class="w-12 h-[2px] bg-accent mt-3"></div>
+          </div>
+          <h3 class="serif-title text-xl sm:text-2xl text-slate-800 mb-4 sm:mb-5">Рассмотрение коммерческих споров</h3>
+          <p class="text-slate-600 leading-7 sm:leading-8 text-[15px] sm:text-[16px]">
+            Арбитраж позволяет эффективно разрешать коммерческие разногласия, минимизируя риски и сохраняя деловые отношения.
+          </p>
+        </div>
+
+        <div class="border border-stone-200 bg-white p-6 sm:p-8 lg:p-10 shadow-card hover:-translate-y-1 hover:shadow-lg transition duration-300">
+          <div class="flex items-start gap-4 mb-5">
+            <div class="service-icon mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v8m4-4H8"/>
+                <circle cx="12" cy="12" r="9"/>
+              </svg>
+            </div>
+            <div class="w-12 h-[2px] bg-accent mt-3"></div>
+          </div>
+          <h3 class="serif-title text-xl sm:text-2xl text-slate-800 mb-4 sm:mb-5">Прозрачность и эффективность процесса</h3>
+          <p class="text-slate-600 leading-7 sm:leading-8 text-[15px] sm:text-[16px]">
+            Четкая процедура, позволяющая быстро достичь решения, которое будет исполнено в соответствии с законодательством.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-10 sm:mt-12">
+        <a href="#consult"
+           class="refined-btn inline-flex items-center justify-center bg-accent text-white px-7 py-4 text-[11px] sm:text-[12px] font-semibold uppercase hover:opacity-90 transition">
+          Узнать больше
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EFFECTIVE RESOLUTION -->
+  <section id="process" class="py-14 sm:py-16 lg:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-5 lg:px-8">
+      <div class="text-center mb-10 sm:mb-12">
+        <div class="text-[11px] sm:text-[12px] uppercase tracking-[0.22em] text-slate-500 mb-4">
+          Третейский процесс
+        </div>
+        <h2 class="serif-title text-3xl sm:text-4xl lg:text-5xl text-slate-800 leading-tight">
+          Эффективное разрешение споров
+        </h2>
+      </div>
+
+      <div class="space-y-6 sm:space-y-8">
+        <div class="bg-white border border-stone-200 p-6 sm:p-8 md:p-10 lg:p-12 shadow-card">
+          <p class="text-[15px] sm:text-[16px] lg:text-[17px] leading-8 sm:leading-9 text-slate-700">
+            Арбитраж предлагает более экономичное решение споров по сравнению с традиционным судебным разбирательством. Процесс проходит конфиденциально, что защищает интересы сторон. Кроме того, арбитражное разбирательство отличается высокой скоростью принятия решений. Ad-hoc арбитраж позволяет адаптировать процесс под конкретные нужды сторон, обеспечивая гибкость и оперативность в решении споров.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 p-6 sm:p-8 md:p-10 lg:p-12 shadow-card">
+          <p class="text-[15px] sm:text-[16px] lg:text-[17px] leading-8 sm:leading-9 text-slate-700">
+            Ad-hoc арбитраж — это форма разрешения споров с помощью арбитра, назначенного для конкретного дела. В отличие от институционального арбитража, где используются постоянно действующие арбитражные учреждения, ad-hoc арбитраж не привязан к определённой организации. Преимущества ad-hoc арбитража включают скорость рассмотрения дела, возможность участия в судебном заседании онлайн.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEES -->
+  <section id="fee" class="py-14 sm:py-16 lg:py-24 bg-paper border-y border-stone-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-5 lg:px-8">
+      <div class="text-center mb-10 sm:mb-12 lg:mb-14">
+        <div class="text-[11px] sm:text-[12px] uppercase tracking-[0.22em] text-slate-500 mb-4">
+          Стоимость
+        </div>
+        <h2 class="serif-title text-3xl sm:text-4xl lg:text-5xl text-slate-800 leading-tight mb-4 sm:mb-5">
+          Арбитражный сбор
+        </h2>
+        <p class="text-slate-600 text-[15px] sm:text-[16px] lg:text-[17px] leading-7 sm:leading-8 max-w-2xl mx-auto">
+          Здесь представлены цены на основныне виды юридических услуг
+        </p>
+      </div>
+
+      <div class="border border-stone-200 bg-white shadow-card divide-y divide-stone-200">
+        <div class="grid md:grid-cols-[1fr_auto] gap-2 sm:gap-3 items-center px-5 sm:px-6 md:px-8 py-5 sm:py-6 hover:bg-stone-50/60 transition">
+          <div class="serif-title text-xl sm:text-2xl text-slate-800">Консультация физических лиц</div>
+          <div class="text-lg sm:text-xl font-semibold text-accent">1500р</div>
+        </div>
+
+        <div class="grid md:grid-cols-[1fr_auto] gap-2 sm:gap-3 items-center px-5 sm:px-6 md:px-8 py-5 sm:py-6 hover:bg-stone-50/60 transition">
+          <div class="serif-title text-xl sm:text-2xl text-slate-800">Консультация юридических лиц</div>
+          <div class="text-lg sm:text-xl font-semibold text-accent">5000р</div>
+        </div>
+
+        <div class="grid md:grid-cols-[1fr_auto] gap-2 sm:gap-3 items-center px-5 sm:px-6 md:px-8 py-5 sm:py-6 hover:bg-stone-50/60 transition">
+          <div class="serif-title text-xl sm:text-2xl text-slate-800">Составление правовых документов</div>
+          <div class="text-lg sm:text-xl font-semibold text-accent">3000р</div>
+        </div>
+
+        <div class="grid md:grid-cols-[1fr_auto] gap-2 sm:gap-3 items-center px-5 sm:px-6 md:px-8 py-5 sm:py-6 hover:bg-stone-50/60 transition">
+          <div class="serif-title text-xl sm:text-2xl text-slate-800">Ознакомление с документами</div>
+          <div class="text-lg sm:text-xl font-semibold text-accent">2000р</div>
+        </div>
+
+        <div class="grid md:grid-cols-[1fr_auto] gap-2 sm:gap-3 items-center px-5 sm:px-6 md:px-8 py-5 sm:py-6 hover:bg-stone-50/60 transition">
+          <div class="serif-title text-xl sm:text-2xl text-slate-800">Представительство в суде</div>
+          <div class="text-lg sm:text-xl font-semibold text-accent">6000р</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="py-14 sm:py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-8">
+      <div class="text-center mb-10 sm:mb-12 lg:mb-14">
+        <div class="text-[11px] sm:text-[12px] uppercase tracking-[0.22em] text-slate-500 mb-4">
+          Дополнительные материалы
+        </div>
+        <h2 class="serif-title text-3xl sm:text-4xl lg:text-5xl text-slate-800 leading-tight">
+          Ресурсы и загрузки
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <article class="overflow-hidden border border-stone-200 bg-white shadow-card hover:-translate-y-1 hover:shadow-lg transition duration-300">
+          <img
+            src="https://static.tildacdn.pub/tild6563-6137-4862-b137-623930633962/anasalshanti169265.jpg"
+            alt="Шаблоны арбитражных решений"
+            class="w-full h-56 sm:h-64 object-cover"
+          />
+          <div class="p-6 sm:p-7">
+            <h3 class="serif-title text-xl sm:text-2xl text-slate-800 mb-4">Шаблоны арбитражных решений</h3>
+            <p class="text-slate-600 leading-7 sm:leading-8 text-[15px] sm:text-[16px]">
+              Скачайте готовые шаблоны для оформления арбитражных решений.
+            </p>
+          </div>
+        </article>
+
+        <article class="overflow-hidden border border-stone-200 bg-white shadow-card hover:-translate-y-1 hover:shadow-lg transition duration-300">
+          <img
+            src="https://static.tildacdn.pub/tild3762-3735-4662-b138-646131396437/aaronburden123584.jpg"
+            alt="Руководство по арбитражу"
+            class="w-full h-56 sm:h-64 object-cover"
+          />
+          <div class="p-6 sm:p-7">
+            <h3 class="serif-title text-xl sm:text-2xl text-slate-800 mb-4">Руководство по арбитражу</h3>
+            <p class="text-slate-600 leading-7 sm:leading-8 text-[15px] sm:text-[16px]">
+              Подробное руководство по арбитражному процессу для начинающих.
+            </p>
+          </div>
+        </article>
+
+        <article class="overflow-hidden border border-stone-200 bg-white shadow-card hover:-translate-y-1 hover:shadow-lg transition duration-300 md:col-span-2 lg:col-span-1">
+          <img
+            src="https://static.tildacdn.pub/tild6233-6164-4561-b461-323365646133/flopappert201009_1.jpg"
+            alt="Юридические ресурсы"
+            class="w-full h-56 sm:h-64 object-cover"
+          />
+          <div class="p-6 sm:p-7">
+            <h3 class="serif-title text-xl sm:text-2xl text-slate-800 mb-4">Юридические ресурсы</h3>
+            <p class="text-slate-600 leading-7 sm:leading-8 text-[15px] sm:text-[16px]">
+              Ссылки на официальные юридические ресурсы и базы данных для поиска информации.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="text-center mt-10 sm:mt-12">
+        <a href="#contacts"
+           class="refined-btn inline-flex items-center justify-center border border-accent text-accent px-7 py-4 text-[11px] sm:text-[12px] font-semibold uppercase hover:bg-accent hover:text-white transition">
+          Читать все статьи
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTS -->
+  <div id="consult"></div>
+  <section id="contacts" class="py-14 sm:py-16 lg:py-24 bg-paper border-t border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-8">
+      <div class="text-center mb-10 sm:mb-12 lg:mb-14">
+        <div class="text-[11px] sm:text-[12px] uppercase tracking-[0.22em] text-slate-500 mb-4">
+          Обратная связь
+        </div>
+        <h2 class="serif-title text-3xl sm:text-4xl lg:text-5xl text-slate-800 leading-tight">
+          Контактная информация
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6 sm:gap-8">
+        <div class="border border-stone-200 bg-white p-6 sm:p-8 md:p-10 shadow-card">
+          <div class="section-line pt-6 sm:pt-8">
+            <div class="space-y-5 sm:space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="contact-icon mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.2a2 2 0 011.94 1.515l.57 2.28a2 2 0 01-.54 1.93l-1.2 1.2a16 16 0 006.364 6.364l1.2-1.2a2 2 0 011.93-.54l2.28.57A2 2 0 0121 16.8V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-[11px] sm:text-sm uppercase tracking-[0.18em] text-slate-500 mb-2">Телефон</div>
+                  <div class="text-xl sm:text-2xl serif-title text-slate-800">+79092131372</div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="contact-icon mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-[11px] sm:text-sm uppercase tracking-[0.18em] text-slate-500 mb-2">Email</div>
+                  <div class="text-xl sm:text-2xl serif-title text-slate-800 break-all">vrnarbitr@yandex.ru</div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="contact-icon mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-[11px] sm:text-sm uppercase tracking-[0.18em] text-slate-500 mb-2">Адрес</div>
+                  <div class="text-[15px] sm:text-lg leading-7 sm:leading-8 text-slate-700">
+                    394026, г. Воронеж, ул. Проспект Труда д. 61
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-5 sm:pt-6 border-t border-stone-200">
+                <div class="text-[11px] sm:text-sm uppercase tracking-[0.18em] text-slate-500 mb-4">Соц. сети</div>
+                <div class="flex gap-3 sm:gap-4 flex-wrap">
+                  <a href="/" class="inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center border border-stone-300 text-xs sm:text-sm text-slate-700 hover:bg-accent hover:text-white hover:border-accent transition" aria-label="twitter">
+                    X
+                  </a>
+                  <a href="/" class="inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center border border-stone-300 text-xs sm:text-sm text-slate-700 hover:bg-accent hover:text-white hover:border-accent transition" aria-label="vk">
+                    VK
+                  </a>
+                  <a href="/" class="inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center border border-stone-300 text-xs sm:text-sm text-slate-700 hover:bg-accent hover:text-white hover:border-accent transition" aria-label="telegram">
+                    TG
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border border-stone-200 bg-white p-6 sm:p-8 md:p-10 shadow-card">
+          <div class="section-line pt-6 sm:pt-8 mb-6 sm:mb-8">
+            <h3 class="serif-title text-2xl sm:text-3xl text-slate-800">
+              Отправить сообщение
+            </h3>
+          </div>
+
+          <form class="space-y-4 sm:space-y-5">
+            <div>
+              <input
+                type="text"
+                placeholder="Ваше имя"
+                class="w-full border border-stone-300 bg-stone-50 px-4 sm:px-5 py-3 sm:py-4 text-[15px] sm:text-[16px] outline-none focus:border-accent"
+              />
+            </div>
+
+            <div>
+              <input
+                type="email"
+                placeholder="Ваш электронный адрес"
+                class="w-full border border-stone-300 bg-stone-50 px-4 sm:px-5 py-3 sm:py-4 text-[15px] sm:text-[16px] outline-none focus:border-accent"
+              />
+            </div>
+
+            <div>
+              <input
+                type="tel"
+                placeholder="Ваш телефон"
+                class="w-full border border-stone-300 bg-stone-50 px-4 sm:px-5 py-3 sm:py-4 text-[15px] sm:text-[16px] outline-none focus:border-accent"
+              />
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                class="refined-btn inline-flex items-center justify-center w-full sm:w-auto bg-accent text-white px-7 py-4 text-[11px] sm:text-[12px] font-semibold uppercase hover:opacity-90 transition"
+              >
+                Отправить сообщение
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-6 sm:py-8 text-center text-xs sm:text-sm text-slate-500">
+    Единоличный арбитр
+  </footer>
+
+  <script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link, #mobileMenu a[href="#consult"]');
+
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('open');
+
+      mobileMenu.classList.toggle('open');
+      burgerBtn.classList.toggle('burger-active');
+      burgerBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        burgerBtn.classList.remove('burger-active');
+        burgerBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1280) {
+        mobileMenu.classList.remove('open');
+        burgerBtn.classList.remove('burger-active');
+        burgerBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+
+</body>
+</html>
