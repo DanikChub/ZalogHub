@@ -2,7 +2,32 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>ZalogHub — сделки под залог</title>
+  <title>ZalogHub — платформа для сделок под залог</title>
+  <meta
+    name="description"
+    content="ZalogHub — будущая платформа для брокеров и инвесторов в нише займов под залог недвижимости."
+  />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://zaloghub.ru/" />
+  <meta property="og:title" content="ZalogHub — платформа для брокеров и инвесторов" />
+  <meta
+    property="og:description"
+    content="Будущая платформа в нише займов под залог недвижимости: кейсы, фильтрация, сопровождение и новая инфраструктура рынка."
+  />
+  <meta property="og:image" content="https://zaloghub.ru/img/og-cover.png" />
+  <meta property="og:site_name" content="ZalogHub" />
+  <meta property="og:locale" content="ru_RU" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ZalogHub — платформа для сделок под залог" />
+  <meta
+    name="twitter:description"
+    content="Платформа для брокеров и инвесторов: поиск кейсов, фильтрация, сопровождение и новая инфраструктура рынка."
+  />
+  <meta name="twitter:image" content="https://zaloghub.ru/img/og-cover.png" />
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -43,17 +68,22 @@
   <!-- NAVBAR -->
   <header class="fixed top-0 w-full z-50 backdrop-blur border-b border-gray-900 bg-black/50">
     <div class="container-main flex items-center justify-between px-6 lg:px-20 py-4">
-      <div class="text-xl font-bold tracking-tight">
-        Zalog<span class="text-accent">Hub</span>
-      </div>
-
+      
+      <a href="./index.html" class="flex items-center shrink-0">
+        <img
+          src="./img/logo.png"
+          alt="ZalogHub"
+          class="h-10 w-auto object-contain"
+        >
+      </a>
+  
       <nav class="hidden md:flex gap-8 text-sm text-gray-400">
         <a href="./product.html" class="hover:text-white transition">Продукт</a>
         <a href="./features.html" class="hover:text-white transition">Возможности</a>
         <a href="./investors.html" class="hover:text-white transition">Инвесторам</a>
         <a href="./contacts.html" class="hover:text-white transition">Контакты</a>
       </nav>
-
+  
       <button class="bg-accent text-black px-5 py-2 rounded-xl font-semibold hover:opacity-90 transition">
         Войти
       </button>
