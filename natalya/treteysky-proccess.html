@@ -123,6 +123,7 @@
     position: relative;
     font-size: 12px;
     text-transform: uppercase;
+    min-width: max-content;
     letter-spacing: 0.16em;
     color: #475569;
     transition: color 0.25s ease;
@@ -537,15 +538,14 @@
         </div>
 
         <nav class="hidden xl:flex items-center gap-6 2xl:gap-8 text-[12px] 2xl:text-[13px] uppercase tracking-[0.16em] text-slate-700">
-         
           <a href="./reglament.html" class="nav-link">Регламент арбитра</a>
-          <a href="./treteysky-proccess.html" class="nav-link">Третейский процесс</a>
+          <a href="./treteysky-proccess.html" class="nav-link active">Третейский процесс</a>
           <a href="./arbitrazhnyy-sbor.html" class="nav-link">Арбитражный сбор</a>
           <a href="./treteyskaya-ogovorka.html" class="nav-link">Третейская оговорка</a>
           <a href="./contacts.html" class="nav-link">Контакты</a>
         </nav>
 
-        <div class="hidden md:flex items-center gap-4">
+        <div class="hidden md:flex items-center gap-2">
           <div class="hidden lg:block text-sm text-slate-600">
             Бесплатная консультация
           </div>
@@ -573,9 +573,9 @@
       <div id="mobileMenu" class="xl:hidden">
         <div class="pb-5">
           <nav class="pt-1">
-            
+           
             <a href="./reglament.html" class="mobile-nav-link">Регламент арбитра</a>
-            <a href="./treteysky-proccess.html" class="nav-link">Третейский процесс</a>
+            <a href="./treteysky-proccess.html" class="mobile-nav-link">Третейский процесс</a>
             <a href="./arbitrazhnyy-sbor.html" class="mobile-nav-link">Арбитражный сбор</a>
             <a href="./treteyskaya-ogovorka.html" class="mobile-nav-link">Третейская оговорка</a>
             <a href="./contacts.html" class="mobile-nav-link">Контакты</a>
@@ -595,138 +595,39 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section id="sud" class="pt-6 sm:pt-8 lg:pt-14 pb-8 lg:pb-14">
-    <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-8">
-      <div class="overflow-hidden border border-stone-300 bg-paper shadow-softlg">
-        <div class="grid lg:grid-cols-2 min-h-[unset] lg:min-h-[700px]">
-          <div class="min-h-[320px] sm:min-h-[420px] lg:min-h-[700px]">
-            <div class="relative h-full w-full overflow-hidden">
-              <img
-                src="./img/main.png"
-                alt="Черкашина Наталия Сергеевна"
-                class="h-full w-full object-cover absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-              />
-              <div class="hero-overlay"></div>
-            </div>
-          </div>
 
-          <div class="bg-[#fbfaf7] border-t lg:border-t-0 lg:border-l border-stone-200 flex items-center">
-            <div class="w-full px-5 py-8 sm:px-7 sm:py-10 md:px-10 lg:px-14 lg:py-14 xl:px-16 xl:py-16">
-              <div class="section-line pt-6 sm:pt-8">
-                <div class="text-[11px] sm:text-[12px] uppercase tracking-[0.22em] text-slate-500 mb-5 sm:mb-6">
-                  Единоличный арбитр
-                </div>
 
-                <h1 class="serif-title text-3xl sm:text-4xl md:text-5xl xl:text-6xl leading-[1.08] text-slate-800 mb-6 sm:mb-8 max-w-xl">
-                  Черкашина Наталия Сергеевна
-                </h1>
-
-                <p class="text-[15px] sm:text-[16px] md:text-[17px] xl:text-[18px] leading-7 sm:leading-8 text-slate-600 max-w-2xl mb-8 sm:mb-10">
-                  Третейский судья по урегулированию коммерческих споров. Специализируется на арбитраже ad hoc, обладает большим опытом в области международной торговли и договорного права. Обеспечиваю максимально комфортный и эффективный арбитражный процесс.
-                </p>
-
-                <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
-                  <a href="#consult"
-                     class="refined-btn inline-flex items-center justify-center bg-accent text-white px-6 py-4 text-[11px] sm:text-[12px] font-semibold uppercase hover:opacity-90 transition">
-                    Записаться
-                  </a>
-                  <a href="#fee"
-                     class="refined-btn inline-flex items-center justify-center border border-accent text-accent px-6 py-4 text-[11px] sm:text-[12px] font-semibold uppercase hover:bg-accent hover:text-white transition">
-                    Арбитражный сбор
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="reglament" class="py-14 sm:py-16 lg:py-24 bg-paper border-y border-stone-200">
-    <div class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12 lg:mb-14">
+  <!-- EFFECTIVE RESOLUTION -->
+  <section id="process" class="py-14 sm:py-16 lg:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-5 lg:px-8">
+      <div class="text-center mb-10 sm:mb-12">
         <div class="text-[11px] sm:text-[12px] uppercase tracking-[0.22em] text-slate-500 mb-4">
-          Основные направления
+          Третейский процесс
         </div>
-       
+        <h2 class="serif-title text-3xl sm:text-4xl lg:text-5xl text-slate-800 leading-tight">
+          Эффективное разрешение споров
+        </h2>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
-        <div class="border border-stone-200 bg-white p-6 sm:p-8 lg:p-10 shadow-card hover:-translate-y-1 hover:shadow-lg transition duration-300">
-          <div class="flex items-start gap-4 mb-5">
-            <div class="service-icon mt-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 4v5c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V7l7-4z"/>
-              </svg>
-            </div>
-            <div class="w-12 h-[2px] bg-accent mt-3"></div>
-          </div>
-          <h3 class="serif-title text-xl sm:text-2xl text-slate-800 mb-4 sm:mb-5">Ad-hoc арбитраж</h3>
-          <p class="text-slate-600 leading-7 sm:leading-8 text-[15px] sm:text-[16px]">
-            Быстрое и справедливое разрешение споров в индивидуальном порядке.
+      <div class="space-y-6 sm:space-y-8">
+        <div class="bg-white border border-stone-200 p-6 sm:p-8 md:p-10 lg:p-12 shadow-card">
+          <p class="text-[15px] sm:text-[16px] lg:text-[17px] leading-8 sm:leading-9 text-slate-700">
+            Арбитраж предлагает более экономичное решение споров по сравнению с традиционным судебным разбирательством. Процесс проходит конфиденциально, что защищает интересы сторон. Кроме того, арбитражное разбирательство отличается высокой скоростью принятия решений. Ad-hoc арбитраж позволяет адаптировать процесс под конкретные нужды сторон, обеспечивая гибкость и оперативность в решении споров.
           </p>
         </div>
 
-        <div class="border border-stone-200 bg-white p-6 sm:p-8 lg:p-10 shadow-card hover:-translate-y-1 hover:shadow-lg transition duration-300">
-          <div class="flex items-start gap-4 mb-5">
-            <div class="service-icon mt-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-6-6h12"/>
-              </svg>
-            </div>
-            <div class="w-12 h-[2px] bg-accent mt-3"></div>
-          </div>
-          <h3 class="serif-title text-xl sm:text-2xl text-slate-800 mb-4 sm:mb-5">Беспристрастный арбитраж</h3>
-          <p class="text-slate-600 leading-7 sm:leading-8 text-[15px] sm:text-[16px]">
-            Независимый арбитр обеспечивает объективное и справедливое рассмотрение споров, защищая интересы всех сторон.
+        <div class="bg-white border border-stone-200 p-6 sm:p-8 md:p-10 lg:p-12 shadow-card">
+          <p class="text-[15px] sm:text-[16px] lg:text-[17px] leading-8 sm:leading-9 text-slate-700">
+            Ad-hoc арбитраж — это форма разрешения споров с помощью арбитра, назначенного для конкретного дела. В отличие от институционального арбитража, где используются постоянно действующие арбитражные учреждения, ad-hoc арбитраж не привязан к определённой организации. Преимущества ad-hoc арбитража включают скорость рассмотрения дела, возможность участия в судебном заседании онлайн.
           </p>
         </div>
-
-        <div class="border border-stone-200 bg-white p-6 sm:p-8 lg:p-10 shadow-card hover:-translate-y-1 hover:shadow-lg transition duration-300">
-          <div class="flex items-start gap-4 mb-5">
-            <div class="service-icon mt-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h8M8 11h8M8 15h5M6 3h12a2 2 0 012 2v14l-4-2-4 2-4-2-4 2V5a2 2 0 012-2z"/>
-              </svg>
-            </div>
-            <div class="w-12 h-[2px] bg-accent mt-3"></div>
-          </div>
-          <h3 class="serif-title text-xl sm:text-2xl text-slate-800 mb-4 sm:mb-5">Рассмотрение коммерческих споров</h3>
-          <p class="text-slate-600 leading-7 sm:leading-8 text-[15px] sm:text-[16px]">
-            Арбитраж позволяет эффективно разрешать коммерческие разногласия, минимизируя риски и сохраняя деловые отношения.
-          </p>
-        </div>
-
-        <div class="border border-stone-200 bg-white p-6 sm:p-8 lg:p-10 shadow-card hover:-translate-y-1 hover:shadow-lg transition duration-300">
-          <div class="flex items-start gap-4 mb-5">
-            <div class="service-icon mt-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v8m4-4H8"/>
-                <circle cx="12" cy="12" r="9"/>
-              </svg>
-            </div>
-            <div class="w-12 h-[2px] bg-accent mt-3"></div>
-          </div>
-          <h3 class="serif-title text-xl sm:text-2xl text-slate-800 mb-4 sm:mb-5">Прозрачность и эффективность процесса</h3>
-          <p class="text-slate-600 leading-7 sm:leading-8 text-[15px] sm:text-[16px]">
-            Четкая процедура, позволяющая быстро достичь решения, которое будет исполнено в соответствии с законодательством.
-          </p>
-        </div>
-      </div>
-
-      <div class="text-center mt-10 sm:mt-12">
-        <a href="#consult"
-           class="refined-btn inline-flex items-center justify-center bg-accent text-white px-7 py-4 text-[11px] sm:text-[12px] font-semibold uppercase hover:opacity-90 transition">
-          Узнать больше
-        </a>
       </div>
     </div>
   </section>
 
 
+
+ 
 
   <!-- CONTACTS -->
   <div id="consult"></div>
