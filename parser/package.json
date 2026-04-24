@@ -1,0 +1,27 @@
+{
+  "name": "parser",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "login": "tsx src/main.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.15.0",
+    "dotenv": "^17.4.2",
+    "form-data": "^4.0.5",
+    "telegram": "^2.26.22"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}

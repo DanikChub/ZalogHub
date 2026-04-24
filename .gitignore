@@ -1,0 +1,75 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+
+# Build outputs
+dist/
+build/
+coverage/
+.tmp/
+.temp/
+
+# TypeScript
+*.tsbuildinfo
+
+# PM2
+.pm2/
+
+# Archives
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+
+# Runtime files
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Site
+site/node_modules/
+site/dist/
+site/.cache/
+
+# Client
+client/node_modules/
+client/dist/
+client/coverage/
+client/.vite/
+
+# Server
+server/node_modules/
+server/dist/
+server/build/
+server/coverage/
+
+# Optional uploads / local db / generated assets
+server/uploads/
+server/storage/
+server/*.sqlite
+server/*.sqlite3
+
+# Misc
+.cache/
