@@ -101,7 +101,7 @@ export async function reparseDealsFromSavedText(params: ReparseDealsParams = {})
             }
 
             if (!params.dryRun) {
-                await deal.update(built.dealData);
+                await deal.update(built.dealData!);
             }
 
             updated++;

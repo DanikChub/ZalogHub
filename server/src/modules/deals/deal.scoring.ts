@@ -17,6 +17,7 @@ export function calculateTopDealScore(input: {
     // =========================
     // 1. LTV — главный фактор
     // =========================
+    if (ltv == null) return 0;
     if (ltv <= 35) score += 80;
     else if (ltv <= 40) score += 70;
     else if (ltv <= 45) score += 60;

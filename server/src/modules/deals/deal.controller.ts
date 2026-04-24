@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import {
     createOrUpdateDealFromParser,
     getDealById,
-    getDeals, recalculateDealScores, reparseDealsFromSavedText,
+    getDeals,
 } from './deal.service.js';
 import type {
     RawMessage,

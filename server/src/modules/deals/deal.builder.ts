@@ -4,6 +4,7 @@ import {resolveParserBySource} from "../parsers/parser.resolver";
 import {resolveDealCity} from "./deal.city";
 import {calculateTopDealScore} from "./deal.scoring";
 import {finalizeParsedFields} from "./deal.finalizer";
+import {ContactUrlSource} from "../../db/models/Deal";
 
 export async function buildDealDataFromRaw(raw: RawMessage, source: Source, images: UploadedDealImage[] = []) {
     const parser = resolveParserBySource(source);
@@ -85,7 +86,7 @@ export async function buildDealDataFromRaw(raw: RawMessage, source: Source, imag
         topDealScore,
 
         contactUrl: contactUrl,
-        contactUrlSource: contactUrlSource,
+        contactUrlSource: contactUrlSource as ContactUrlSource,
 
         postUrl: raw.url ?? null,
         images,

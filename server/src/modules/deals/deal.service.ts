@@ -1,5 +1,5 @@
 import { Op, Order, WhereOptions } from 'sequelize';
-import { Deal } from '../../db/models/Deal.js';
+import {ContactUrlSource, Deal} from '../../db/models/Deal.js';
 import { City } from '../../db/models/City.js';
 import { Source } from '../../db/models/Source.js';
 import { resolveDealCity } from './deal.city.js';
@@ -77,6 +77,7 @@ export async function createOrUpdateDealFromParser(
         };
     }
 
+
     const built = await buildDealDataFromRaw(raw, source, images);
 
     if (built.skipped) {
@@ -95,8 +96,10 @@ export async function createOrUpdateDealFromParser(
         },
     });
 
+
+
     if (existing) {
-        await existing.update(built.dealData);
+        await existing.update(built.dealData!);
 
         return {
             ok: true,
@@ -107,7 +110,7 @@ export async function createOrUpdateDealFromParser(
         };
     }
 
-    const deal = await Deal.create(built.dealData);
+    const deal = await Deal.create(built.dealData!);
 
     return {
         ok: true,
@@ -190,7 +193,7 @@ export async function getDeals(params: GetDealsParams) {
 
     const search = params.search?.trim();
     if (search) {
-        where[Op.or] = [
+        (where as any)[Op.or] = [
             { type: { [Op.iLike]: `%${search}%` } },
             { address: { [Op.iLike]: `%${search}%` } },
             { objectName: { [Op.iLike]: `%${search}%` } },
