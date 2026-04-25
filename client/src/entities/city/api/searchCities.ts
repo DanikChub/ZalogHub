@@ -9,6 +9,6 @@ export async function searchCities(params: SearchCitiesParams) {
         searchParams.set(key, String(value));
     });
 
-    const { data } = await http.get<City[]>(`/api/cities/search?${searchParams.toString()}`);
+    const { data } = await http.get<City[]>(`/cities/search?${searchParams.toString()}`);
     return data;
 }

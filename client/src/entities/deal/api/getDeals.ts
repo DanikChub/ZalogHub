@@ -19,7 +19,7 @@ export async function getDeals(params: DealsQueryParams = {}) {
     });
 
     const queryString = searchParams.toString();
-    const url = queryString ? `/api/deals?${queryString}` : '/api/deals';
+    const url = queryString ? `/deals?${queryString}` : '/deals';
 
     const { data } = await http.get<DealResponse>(url);
     return data;

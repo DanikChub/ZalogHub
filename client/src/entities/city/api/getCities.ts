@@ -10,7 +10,7 @@ export async function getCities(params: GetCitiesParams = {}) {
     });
 
     const queryString = searchParams.toString();
-    const url = queryString ? `/api/cities?${queryString}` : '/api/cities';
+    const url = queryString ? `/cities?${queryString}` : '/api/cities';
 
     const { data } = await http.get<City[]>(url);
     return data;
