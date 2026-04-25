@@ -1,4 +1,4 @@
-import type { Deal } from '../model/types';
+import type {Deal, DealListItem} from '../model/types';
 import { theme } from '@/shared/config/theme.ts';
 import {
     AlertTriangle,
@@ -13,7 +13,7 @@ import { getDealActionUrl } from '@/shared/lib/deal/getDealActionUrl.ts';
 
 
 type DealCardProps = {
-    deal: Deal;
+    deal: DealListItem;
 };
 
 function formatMoney(value: number | null) {

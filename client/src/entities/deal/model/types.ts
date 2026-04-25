@@ -86,7 +86,7 @@ export type Deal = {
     updatedAt: string;
 };
 
-export type DealListItem = Omit<Deal, 'fullText' | 'images'> & {
+export type DealListItem = Omit<Deal, 'fullText'> & {
     fullText?: never;
 };
 

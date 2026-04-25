@@ -4,7 +4,7 @@ import {
     DealFilters,
     type DealFiltersValues,
 } from '@/features/deal-filters';
-import {type Deal, DealCard, getDeals} from "@/entities/deal";
+import {DealCard, type DealListItem, getDeals} from "@/entities/deal";
 import {Pagination} from "@/shared/ui/Pagination";
 
 const DEFAULT_PAGE_SIZE = 20;
@@ -15,7 +15,7 @@ const initialFilters: DealFiltersValues = {
 };
 
 export function DealsList() {
-    const [items, setItems] = useState<Deal[]>([]);
+    const [items, setItems] = useState<DealListItem[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
