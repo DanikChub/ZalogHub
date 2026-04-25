@@ -44,7 +44,7 @@ npm run build
 # ---------------- RESTART ----------------
 
 echo "8. Restart backend"
-pm2 restart zaloghub-server || pm2 restart all
+pm2 restart zaloghub-api || pm2 restart all
 
 echo "9. Reload nginx"
 sudo nginx -t
