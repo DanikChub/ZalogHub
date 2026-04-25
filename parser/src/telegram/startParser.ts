@@ -173,11 +173,26 @@ async function syncSources(client: TelegramClient) {
 }
 
 export async function startParser() {
+
+    const clientOptions: any = {
+        connectionRetries: 5,
+    };
+
+    if (process.env.TG_PROXY_ENABLED === 'true') {
+        clientOptions.proxy = {
+            ip: process.env.TG_PROXY_HOST!,
+            port: Number(process.env.TG_PROXY_PORT),
+            socksType: 5,
+            username: process.env.TG_PROXY_USERNAME,
+            password: process.env.TG_PROXY_PASSWORD,
+        };
+    }
+
     const client = new TelegramClient(
         new StringSession(env.tgSession),
         Number(env.tgApiId),
         env.tgApiHash,
-        { connectionRetries: 5 },
+        clientOptions,
     );
 
     await client.start({

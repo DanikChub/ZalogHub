@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 import { ParserSourceConfig } from '../../core/types/source-config.js';
-import {env} from "../../config/env";
+import {env} from "../../config/env.js";
+
 
 export async function getSources(): Promise<ParserSourceConfig[]> {
     const response = await axios.get(`${env.serverUrl}/api/parser/sources`, {
