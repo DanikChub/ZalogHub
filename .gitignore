@@ -73,3 +73,8 @@ server/*.sqlite3
 
 # Misc
 .cache/
+
+tmp/
+
+parser/storage
+parser/storage/tmp
