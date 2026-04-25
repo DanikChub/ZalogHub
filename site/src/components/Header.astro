@@ -1,0 +1,61 @@
+
+---
+const pathname = Astro.url.pathname;
+
+const isActive = (href: string) => pathname === href;
+---
+
+<header class="fixed top-0 w-full z-50 backdrop-blur border-b border-gray-900 bg-black/50">
+    <div class="container-main flex items-center justify-between py-2">
+        <a href="/" class="flex items-center shrink-0 intro-top intro-delay-100">
+            <img
+                    src="/img/logo.png"
+                    alt="ZalogHub"
+                    class="h-8 w-auto object-contain"
+            />
+        </a>
+
+        <nav class="hidden md:flex gap-8 text-sm intro-top intro-delay-300">
+            <a
+                    href="/"
+                    class={`${isActive('/') ? 'text-white' : 'text-gray-400'} hover:text-white transition`}
+            >
+                Главная
+            </a>
+            <a
+                    href="/product"
+                    class={`${isActive('/product') ? 'text-white' : 'text-gray-400'} hover:text-white transition`}
+            >
+                Продукт
+            </a>
+
+            <a
+                    href="/features"
+                    class={`${isActive('/features') ? 'text-white' : 'text-gray-400'} hover:text-white transition`}
+            >
+                Возможности
+            </a>
+
+            <a
+                    href="/investors"
+                    class={`${isActive('/investors') ? 'text-white' : 'text-gray-400'} hover:text-white transition`}
+            >
+                Инвесторам
+            </a>
+
+            <a
+                    href="/contacts"
+                    class={`${isActive('/contacts') ? 'text-white' : 'text-gray-400'} hover:text-white transition`}
+            >
+                Контакты
+            </a>
+        </nav>
+
+        <a
+                href="https://app.zaloghub.ru"
+                class="bg-accent text-black px-4 py-2 text-sm rounded-xl font-semibold hover:opacity-90 transition intro-top intro-delay-500"
+        >
+            Смотреть демо
+        </a>
+    </div>
+</header>

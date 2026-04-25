@@ -1,0 +1,50 @@
+---
+const solutions = [
+    {
+        text: 'Все заявки в одном месте',
+        icon: 'layers',
+    },
+    {
+        text: 'Вы видите сделки раньше других',
+        icon: 'bolt',
+    },
+    {
+        text: 'Не теряете деньги в потоке сообщений',
+        icon: 'shield',
+    },
+];
+---
+
+<section class="py-20 px-6 lg:px-20 border-t border-gray-900">
+    <div class="container-main">
+        <h2 class="text-3xl font-bold mb-10 reveal">ZalogHub - это будущее</h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            {solutions.map((item, index) => (
+                    <div class="reveal bg-gray-900 p-6 rounded-2xl flex gap-3 items-start hover:border-accent border border-transparent transition"
+                         style={`transition-delay: ${index * 120}ms`}
+                    >
+                        {item.icon === 'layers' && (
+                                <svg class="w-6 h-6 text-accent mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-width="2" d="M12 6l-8 4 8 4 8-4-8-4zM4 14l8 4 8-4"/>
+                                </svg>
+                        )}
+
+                        {item.icon === 'bolt' && (
+                                <svg class="w-6 h-6 text-accent mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                        )}
+
+                        {item.icon === 'shield' && (
+                                <svg class="w-6 h-6 text-accent mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-width="2" d="M12 3l8 4v5c0 5-3.5 9-8 10-4.5-1-8-5-8-10V7l8-4z"/>
+                                </svg>
+                        )}
+
+                        <div>{item.text}</div>
+                    </div>
+            ))}
+        </div>
+    </div>
+</section>

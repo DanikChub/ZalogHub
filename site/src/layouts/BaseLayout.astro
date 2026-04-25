@@ -1,0 +1,75 @@
+---
+import '../styles/global.css';
+
+const {
+    title = 'ZalogHub — платформа для сделок под залог',
+    description = 'ZalogHub — будущая платформа для брокеров и инвесторов в нише займов под залог недвижимости.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+
+    <title>{title}</title>
+
+    <meta
+            name="description"
+            content={description}
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zaloghub.ru/" />
+    <meta property="og:title" content="ZalogHub — платформа для брокеров и инвесторов" />
+    <meta
+            property="og:description"
+            content="Будущая платформа в нише займов под залог недвижимости: кейсы, фильтрация, сопровождение и новая инфраструктура рынка."
+    />
+    <meta property="og:image" content="https://zaloghub.ru/img/og-cover.png" />
+    <meta property="og:site_name" content="ZalogHub" />
+    <meta property="og:locale" content="ru_RU" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ZalogHub — платформа для сделок под залог" />
+    <meta
+            name="twitter:description"
+            content="Платформа для брокеров и инвесторов: поиск кейсов, фильтрация, сопровождение и новая инфраструктура рынка."
+    />
+    <meta name="twitter:image" content="https://zaloghub.ru/img/og-cover.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+            rel="stylesheet"
+    />
+</head>
+
+<body class="bg-black text-white">
+    <slot />
+
+    <script>
+        const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                });
+            },
+            {
+                threshold: 0.15,
+                rootMargin: '0px 0px -80px 0px',
+            }
+        );
+
+        elements.forEach((element) => observer.observe(element));
+    </script>
+</body>
+</html>

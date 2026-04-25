@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout>
+    <Header />
+
+    <main>
+        <!-- HERO -->
+        <section class="pt-32 pb-24 px-6 lg:px-20 relative overflow-hidden">
+            <div class="absolute right-[-80px] top-[-20px] w-[420px] h-[420px] bg-accent/15 blur-[120px] rounded-full"></div>
+            <div class="absolute left-[0] bottom-[10%] w-[360px] h-[220px] bg-accent/10 blur-[100px] rounded-full"></div>
+
+            <div class="container-main relative z-10">
+                <div class="max-w-4xl">
+                    <div class="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-2 text-sm text-gray-300 mb-6">
+                        <span class="w-2 h-2 rounded-full bg-accent"></span>
+                        Будущие возможности платформы
+                    </div>
+
+                    <h1 class="text-5xl lg:text-7xl font-black leading-tight">
+                        Всё, чего не хватает<br>
+                        рынку <span class="text-accent">сейчас</span>
+                    </h1>
+
+                    <p class="mt-6 text-lg text-gray-400 max-w-2xl leading-relaxed">
+                        ZalogHub задуман как рабочая среда для сделок под залог недвижимости:
+                        не просто витрина заявок, а полноценный набор инструментов для поиска, публикации,
+                        контроля, аналитики и сопровождения.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CORE FEATURES -->
+        <section class="py-20 px-6 lg:px-20 border-t border-gray-900">
+            <div class="container-main">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-10">Ключевые возможности</h2>
+
+                <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <div class="rounded-3xl border border-white/10 bg-[#0D0D0D] p-8">
+                        <div class="text-accent text-sm mb-3">01</div>
+                        <h3 class="text-2xl font-bold mb-4">Лента заявок</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Все кейсы собираются в одном потоке. Без хаоса мессенджеров, потерь важных сообщений и ручной пересылки.
+                        </p>
+                    </div>
+
+                    <div class="rounded-3xl border border-white/10 bg-[#0D0D0D] p-8">
+                        <div class="text-accent text-sm mb-3">02</div>
+                        <h3 class="text-2xl font-bold mb-4">Умная фильтрация</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Инвесторы смогут быстро находить релевантные кейсы по параметрам сделки, объекту, сумме и условиям.
+                        </p>
+                    </div>
+
+                    <div class="rounded-3xl border border-white/10 bg-[#0D0D0D] p-8">
+                        <div class="text-accent text-sm mb-3">03</div>
+                        <h3 class="text-2xl font-bold mb-4">Поиск по рынку</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Поиск по всем заявкам и карточкам — чтобы не листать вручную и не терять сильные возможности.
+                        </p>
+                    </div>
+
+                    <div class="rounded-3xl border border-white/10 bg-[#0D0D0D] p-8">
+                        <div class="text-accent text-sm mb-3">04</div>
+                        <h3 class="text-2xl font-bold mb-4">Карточка сделки</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Полная структура кейса: параметры займа, объект, логика сделки, документы и детали для принятия решения.
+                        </p>
+                    </div>
+
+                    <div class="rounded-3xl border border-white/10 bg-[#0D0D0D] p-8">
+                        <div class="text-accent text-sm mb-3">05</div>
+                        <h3 class="text-2xl font-bold mb-4">Аналитика брокеров</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Владельцы брокерских команд увидят активность, конверсию и результативность каждого брокера.
+                        </p>
+                    </div>
+
+                    <div class="rounded-3xl border border-white/10 bg-[#0D0D0D] p-8">
+                        <div class="text-accent text-sm mb-3">06</div>
+                        <h3 class="text-2xl font-bold mb-4">Сопровождение сделок</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Платформа будет усиливать не только поиск кейса, но и сам путь сделки до результата.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOR DIFFERENT ROLES -->
+        <section class="py-20 px-6 lg:px-20 border-t border-gray-900">
+            <div class="container-main">
+                <div class="grid lg:grid-cols-3 gap-6">
+                    <div class="rounded-[28px] border border-gray-800 bg-gray-900/50 p-8">
+                        <h3 class="text-2xl font-bold mb-4">Для инвестора</h3>
+                        <ul class="space-y-3 text-gray-400">
+                            <li>— быстрый доступ к кейсам</li>
+                            <li>— фильтрация и поиск</li>
+                            <li>— удобное сравнение вариантов</li>
+                            <li>— меньше потерь в информационном шуме</li>
+                        </ul>
+                    </div>
+
+                    <div class="rounded-[28px] border border-gray-800 bg-gray-900/50 p-8">
+                        <h3 class="text-2xl font-bold mb-4">Для брокера</h3>
+                        <ul class="space-y-3 text-gray-400">
+                            <li>— структурированная публикация кейсов</li>
+                            <li>— понятная передача заявок инвестору</li>
+                            <li>— больше профессионального доверия</li>
+                            <li>— работа в системе, а не в хаосе чатов</li>
+                        </ul>
+                    </div>
+
+                    <div class="rounded-[28px] border border-gray-800 bg-gray-900/50 p-8">
+                        <h3 class="text-2xl font-bold mb-4">Для владельца команды</h3>
+                        <ul class="space-y-3 text-gray-400">
+                            <li>— контроль брокеров</li>
+                            <li>— статистика продаж</li>
+                            <li>— прозрачная воронка работы</li>
+                            <li>— управление, а не догадки</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FUTURE STACK -->
+        <section class="py-20 px-6 lg:px-20 border-t border-gray-900">
+            <div class="container-main">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-10">Следующий слой ценности</h2>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="rounded-3xl border border-white/10 bg-[#0B0B0B] p-8">
+                        <div class="text-accent text-sm font-medium mb-3">Операционная часть</div>
+                        <h3 class="text-2xl font-bold mb-4">Не только найти сделку, но и довести её</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Платформа создаётся вокруг реальной работы рынка, где важен не только лид,
+                            но и сопровождение процесса, координация сторон и движение к закрытию сделки.
+                        </p>
+                    </div>
+
+                    <div class="rounded-3xl border border-white/10 bg-[#0B0B0B] p-8">
+                        <div class="text-accent text-sm font-medium mb-3">Юридическая часть</div>
+                        <h3 class="text-2xl font-bold mb-4">Поддержка документов и договоров</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Отдельное преимущество ZalogHub — ориентация на практическую юридическую помощь:
+                            подготовку договоров, консультации и усиление доверия между сторонами.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY IT MATTERS -->
+        <section class="py-20 px-6 lg:px-20 border-t border-gray-900">
+            <div class="container-main">
+                <div class="rounded-[32px] border border-accent/20 bg-accent/5 p-10 lg:p-14">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-6">Почему это важно</h2>
+                    <p class="text-lg text-gray-300 max-w-4xl leading-relaxed">
+                        Сегодня рынок во многом держится на ручной координации через Telegram и личные связи.
+                        Это нестабильно, непрозрачно и неудобно для масштабирования. ZalogHub должен стать
+                        точкой, где рынок получает нормальную цифровую архитектуру: современную, понятную и управляемую.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-28 px-6 lg:px-20 border-t border-gray-900 text-center">
+            <div class="container-main">
+                <h2 class="text-4xl lg:text-5xl font-black mb-6">
+                    Возможности формируются уже сейчас
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
+                    Если вам близка идея нового стандарта для рынка — давайте познакомимся до запуска платформы.
+                </p>
+                <a href="contacts.html" class="inline-flex bg-accent text-black px-8 py-4 rounded-xl text-lg font-semibold hover:opacity-90 transition">
+                    Перейти к контактам
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <Footer/>
+</BaseLayout>

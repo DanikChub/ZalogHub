@@ -1,0 +1,69 @@
+---
+const problems = [
+    {
+        text: 'Telegram больше не стабильная платформа',
+        icon: 'warning',
+        accent: false,
+    },
+    {
+        text: 'Брокеры теряют доступ к аудитории',
+        icon: 'chart',
+        accent: false,
+    },
+    {
+        text: 'Нет удобной альтернативы',
+        icon: 'cross',
+        accent: false,
+    },
+    {
+        text: 'Потеря клиентов = потеря капитала',
+        icon: 'money',
+        accent: true,
+    },
+];
+---
+
+<section class="py-20 px-6 lg:px-20 border-t border-gray-900">
+    <div class="container-main">
+        <h2 class="text-3xl font-bold mb-10 reveal">Рынок теряет основу</h2>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {problems.map((item, index) => (
+                    <div
+                            class={`reveal bg-gray-900/60 border ${item.accent ? 'border-accent/20' : 'border-gray-800'} rounded-2xl p-8 text-center`}
+                            style={`transition-delay: ${index * 120}ms`}
+                    >
+                        <div class="flex justify-center mb-5">
+                            {item.icon === 'warning' && (
+                                    <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4c-.77-1.33-2.69-1.33-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z"/>
+                                    </svg>
+                            )}
+
+                            {item.icon === 'chart' && (
+                                    <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M7 14l3-3 4 4 5-5"/>
+                                    </svg>
+                            )}
+
+                            {item.icon === 'cross' && (
+                                    <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                                    </svg>
+                            )}
+
+                            {item.icon === 'money' && (
+                                    <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 8c-2 0-4 1-4 3s2 3 4 3 4 1 4 3-2 3-4 3m0-12V4m0 16v-4"/>
+                                    </svg>
+                            )}
+                        </div>
+
+                        <div class="text-base text-gray-300 leading-relaxed">
+                            {item.text}
+                        </div>
+                    </div>
+            ))}
+        </div>
+    </div>
+</section>

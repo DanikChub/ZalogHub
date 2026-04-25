@@ -1,0 +1,41 @@
+---
+const {
+    title,
+    text,
+    centered = false,
+    accentBorder = false,
+    class: className = '',
+} = Astro.props;
+---
+
+<div
+        class={`
+    bg-gray-900/60 rounded-2xl p-6 border transition
+    ${accentBorder ? 'border-accent/20' : 'border-gray-800'}
+    ${centered ? 'text-center' : 'flex gap-3 items-start'}
+    ${className}
+  `}
+>
+    {centered ? (
+            <>
+                <div class="flex justify-center mb-5 text-accent">
+                    <slot name="icon" />
+                </div>
+
+                <div class="text-base text-gray-300 leading-relaxed">
+                    {text}
+                </div>
+            </>
+    ) : (
+            <>
+                <div class="shrink-0 text-accent mt-1">
+                    <slot name="icon" />
+                </div>
+
+                <div>
+                    {title && <h3 class="font-semibold text-xl mb-2">{title}</h3>}
+                    {text ? <p class="text-gray-400">{text}</p> : <slot />}
+                </div>
+            </>
+    )}
+</div>

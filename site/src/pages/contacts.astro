@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout>
+    <Header />
+
+    <main>
+        <!-- HERO -->
+        <section class="pt-32 pb-24 px-6 lg:px-20 relative overflow-hidden">
+            <div class="absolute left-[-80px] top-[-30px] w-[480px] h-[480px] bg-accent/15 blur-[140px] rounded-full"></div>
+            <div class="absolute right-[8%] bottom-[12%] w-[380px] h-[220px] bg-accent/10 blur-[100px] rounded-full"></div>
+
+            <div class="container-main relative z-10">
+                <div class="max-w-4xl">
+                    <div class="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-2 text-sm text-gray-300 mb-6">
+                        <span class="w-2 h-2 rounded-full bg-accent"></span>
+                        Контактная страница бренда
+                    </div>
+
+                    <h1 class="text-5xl lg:text-7xl font-black leading-tight">
+                        Давайте обсудим<br>
+                        <span class="text-accent">ZalogHub</span>
+                    </h1>
+
+                    <p class="mt-6 text-lg text-gray-400 max-w-2xl leading-relaxed">
+                        Сейчас платформа находится в разработке. Но уже на этом этапе мы открыты к диалогу с инвесторами,
+                        брокерами, владельцами команд и партнёрами, которым близка идея новой инфраструктуры для рынка.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT OPTIONS -->
+        <section class="py-20 px-6 lg:px-20 border-t border-gray-900">
+            <div class="container-main">
+                <div class="grid lg:grid-cols-3 gap-6">
+                    <div class="rounded-3xl border border-white/10 bg-[#0D0D0D] p-8">
+                        <div class="text-accent text-sm mb-3">Инвесторам</div>
+                        <h3 class="text-2xl font-bold mb-4">Обсудить участие</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Если вы выдаёте деньги под займ недвижимости и хотите быть ближе к сильному потоку кейсов —
+                            эта страница для первого контакта.
+                        </p>
+                    </div>
+
+                    <div class="rounded-3xl border border-white/10 bg-[#0D0D0D] p-8">
+                        <div class="text-accent text-sm mb-3">Брокерам</div>
+                        <h3 class="text-2xl font-bold mb-4">Присоединиться рано</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Если вы работаете с заемщиками и передаёте кейсы инвесторам за комиссию,
+                            можно обсудить интерес к будущей платформе заранее.
+                        </p>
+                    </div>
+
+                    <div class="rounded-3xl border border-white/10 bg-[#0D0D0D] p-8">
+                        <div class="text-accent text-sm mb-3">Партнёрам</div>
+                        <h3 class="text-2xl font-bold mb-4">Стать частью инфраструктуры</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Мы открыты к профессиональным контактам и тем, кто может усилить экосистему рынка вокруг ZalogHub.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORM + INFO -->
+        <section id="form" class="py-20 px-6 lg:px-20 border-t border-gray-900">
+            <div class="container-main">
+                <div class="grid lg:grid-cols-2 gap-10 items-start">
+
+                    <div class="rounded-[32px] border border-white/10 bg-[#0B0B0B] p-8 lg:p-10">
+                        <div class="text-accent text-sm font-medium mb-4">Связаться</div>
+                        <h2 class="text-3xl font-bold mb-6">Оставьте контакт</h2>
+
+                        <form class="space-y-5">
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Ваше имя</label>
+                                <input
+                                        type="text"
+                                        placeholder="Введите имя"
+                                        class="w-full rounded-2xl border border-gray-800 bg-black px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-accent transition"
+                                />
+                            </div>
+
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Телефон или Telegram</label>
+                                <input
+                                        type="text"
+                                        placeholder="Как с вами связаться"
+                                        class="w-full rounded-2xl border border-gray-800 bg-black px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-accent transition"
+                                />
+                            </div>
+
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Кто вы</label>
+                                <select class="w-full rounded-2xl border border-gray-800 bg-black px-5 py-4 text-white focus:outline-none focus:border-accent transition">
+                                    <option>Инвестор</option>
+                                    <option>Брокер</option>
+                                    <option>Владелец брокерской компании</option>
+                                    <option>Партнёр</option>
+                                    <option>Другое</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Сообщение</label>
+                                <textarea
+                                        rows="5"
+                                        placeholder="Расскажите, чем вы занимаетесь и почему вам интересен ZalogHub"
+                                        class="w-full rounded-2xl border border-gray-800 bg-black px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-accent transition resize-none"
+                                ></textarea>
+                            </div>
+
+                            <button
+                                    type="button"
+                                    class="w-full bg-accent text-black px-6 py-4 rounded-2xl font-semibold hover:opacity-90 transition"
+                            >
+                                Отправить заявку
+                            </button>
+
+                            <p class="text-sm text-gray-600">
+                                Сейчас форма носит информационный характер и используется для сбора интереса к проекту.
+                            </p>
+                        </form>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="rounded-[32px] border border-gray-800 bg-gray-900/50 p-8">
+                            <div class="text-accent text-sm font-medium mb-3">Что можно обсудить</div>
+                            <h3 class="text-2xl font-bold mb-4">Темы для контакта</h3>
+                            <ul class="space-y-3 text-gray-400">
+                                <li>— участие инвестора в раннем круге</li>
+                                <li>— интерес со стороны брокеров</li>
+                                <li>— роль владельцев брокерских команд</li>
+                                <li>— юр. сопровождение и договорная часть</li>
+                                <li>— партнёрство вокруг будущей экосистемы</li>
+                            </ul>
+                        </div>
+
+                        <div class="rounded-[32px] border border-accent/20 bg-accent/5 p-8">
+                            <div class="text-accent text-sm font-medium mb-3">Важно</div>
+                            <h3 class="text-2xl font-bold mb-4">Платформа ещё не запущена</h3>
+                            <p class="text-gray-300 leading-relaxed">
+                                Сейчас ZalogHub находится на этапе разработки и построения бренда.
+                                Сайт нужен для фиксации позиции на рынке и для первых профессиональных контактов.
+                            </p>
+                        </div>
+
+                        <div class="rounded-[32px] border border-gray-800 bg-gray-900/50 p-8">
+                            <div class="text-accent text-sm font-medium mb-3">Тон бренда</div>
+                            <h3 class="text-2xl font-bold mb-4">Серьёзность, доверие, инфраструктура</h3>
+                            <p class="text-gray-400 leading-relaxed">
+                                ZalogHub строится не как очередной “чат с кейсами”, а как бренд,
+                                вокруг которого формируется новый профессиональный стандарт рынка.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-28 px-6 lg:px-20 border-t border-gray-900 text-center">
+            <div class="container-main">
+                <h2 class="text-4xl lg:text-5xl font-black mb-6">
+                    Новый рынок начинается с первых контактов
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
+                    Если вам близка идея объединить рынок займов под залог недвижимости в единую инфраструктуру — напишите нам.
+                </p>
+                <a href="#form" class="inline-flex bg-accent text-black px-8 py-4 rounded-xl text-lg font-semibold hover:opacity-90 transition">
+                    Оставить контакт
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <Footer/>
+</BaseLayout>

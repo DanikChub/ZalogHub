@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+import HomeHero from '../components/home/HomeHero.astro';
+import HomeProblem from '../components/home/HomeProblem.astro';
+import HomeOpportunity from '../components/home/HomeOpportunity.astro';
+import HomeSolution from '../components/home/HomeSolution.astro';
+import HomeTools from '../components/home/HomeTools.astro';
+import HomeCTA from '../components/home/HomeCTA.astro';
+---
+
+<BaseLayout>
+	<Header />
+
+	<main>
+		<HomeHero />
+		<HomeProblem />
+		<HomeOpportunity />
+		<HomeSolution />
+		<HomeTools />
+		<HomeCTA />
+	</main>
+
+	<Footer />
+</BaseLayout>

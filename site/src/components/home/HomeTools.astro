@@ -1,0 +1,70 @@
+---
+const tools = [
+    {
+        title: 'Лента заявок',
+        text: 'Все кейсы в одном потоке',
+        icon: 'list',
+        position: 'left',
+    },
+    {
+        title: 'Умная фильтрация',
+        text: 'Находите сделки за секунды',
+        icon: 'filter',
+        position: 'right',
+    },
+    {
+        title: 'Карточка сделки',
+        text: 'Полная информация по кейсу',
+        icon: 'card',
+        position: 'left',
+    },
+    {
+        title: 'Поиск',
+        text: 'По всем заявкам и параметрам',
+        icon: 'search',
+        position: 'right',
+    },
+];
+---
+
+<section class="py-20 px-6 lg:px-20 border-t border-gray-900">
+    <div class="container-main">
+        <h2 class="text-3xl font-bold mb-10 reveal">Инструменты</h2>
+
+        <div class="grid md:grid-cols-2 gap-10">
+            {tools.map((item, index) => (
+                    <div class={`${item.position == 'left' ? 'reveal-left' : 'reveal-right'} bg-gray-900 p-6 rounded-2xl flex gap-3`}
+                         style={`transition-delay: ${index * 120}ms`}>
+                        {item.icon === 'list' && (
+                                <svg class="w-6 h-6 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                                </svg>
+                        )}
+
+                        {item.icon === 'filter' && (
+                                <svg class="w-6 h-6 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-width="2" d="M3 4h18v4H3zM3 10h18v10H3z"/>
+                                </svg>
+                        )}
+
+                        {item.icon === 'card' && (
+                                <svg class="w-6 h-6 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-width="2" d="M9 12h6m-6 4h6M7 4h10l2 2v14H5V6l2-2z"/>
+                                </svg>
+                        )}
+
+                        {item.icon === 'search' && (
+                                <svg class="w-6 h-6 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-width="2" d="M21 21l-4.35-4.35M16 10a6 6 0 11-12 0 6 6 0 0112 0z"/>
+                                </svg>
+                        )}
+
+                        <div>
+                            <h3 class="font-semibold text-xl mb-2">{item.title}</h3>
+                            <p class="text-gray-400">{item.text}</p>
+                        </div>
+                    </div>
+            ))}
+        </div>
+    </div>
+</section>

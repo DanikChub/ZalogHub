@@ -1,0 +1,11 @@
+---
+const {
+    class: className = '',
+} = Astro.props;
+---
+
+<section class={`py-20 px-6 lg:px-20 border-t border-gray-900 ${className}`}>
+    <div class="container-main">
+        <slot />
+    </div>
+</section>

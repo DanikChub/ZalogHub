@@ -6,12 +6,16 @@ export type RawMessageImage = {
 
 export type RawMessage = {
     sourceType: 'telegram';
-    sourceChannelId: string;
-    sourceKey: string;
+    sourceId: number;
+
+    sourceChannelId: string | null;
+    sourceTitle: string | null;
+
     externalMessageId: string;
     publishedAt: string;
     text: string;
     url?: string | null;
     images?: RawMessageImage[];
+
     metadata?: Record<string, unknown>;
 };

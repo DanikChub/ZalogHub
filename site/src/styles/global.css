@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+    --color-accent: #34C759;
+}
+
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.container-main {
+    max-width: 1350px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+@layer utilities {
+    .intro-top {
+        opacity: 0;
+        transform: translateY(-26px);
+        animation: introTop 0.9s ease forwards;
+    }
+
+    .intro-left {
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: introLeft 0.9s ease forwards;
+    }
+
+    .intro-delay-100 {
+        animation-delay: 100ms;
+    }
+
+    .intro-delay-300 {
+        animation-delay: 300ms;
+    }
+
+    .intro-delay-500 {
+        animation-delay: 500ms;
+    }
+
+    .intro-delay-800 {
+        animation-delay: 800ms;
+    }
+
+    .intro-delay-1100 {
+        animation-delay: 1100ms;
+    }
+
+    .intro-delay-1400 {
+        animation-delay: 1400ms;
+    }
+
+
+    @keyframes introTop {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes introLeft {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+@layer utilities {
+    .reveal {
+        opacity: 0;
+        transform: translateY(34px);
+        transition:
+                opacity 700ms ease,
+                transform 700ms ease;
+        will-change: opacity, transform;
+    }
+
+    .reveal-left {
+        opacity: 0;
+        transform: translateX(-34px);
+        transition:
+                opacity 700ms ease,
+                transform 700ms ease;
+        will-change: opacity, transform;
+    }
+
+    .reveal-right {
+        opacity: 0;
+        transform: translateX(34px);
+        transition:
+                opacity 700ms ease,
+                transform 700ms ease;
+        will-change: opacity, transform;
+    }
+
+    .reveal.is-visible,
+    .reveal-left.is-visible,
+    .reveal-right.is-visible {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
